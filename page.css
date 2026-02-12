@@ -20,28 +20,9 @@ body {
 @media (min-width: 1440px){ :root { font-size: 20px;   } }  /* 16 * 1.25 */
 @media (min-width: 1920px){ :root { font-size: 20.8px; } }  /* 16 * 1.30 */
 
-/* Clamp method */
-/* 
-
-    :root { font-size: clamp(16px, 0.3vw + 15.04px, 20.8px) }
-
- */
-
-/* Grid box */
 .grid-box {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    gap: 1.5rem;
-}
-
-h1 {
-    font-size: 2rem;
-
-    background-color: black;
-    color: white;
-    padding: 1rem;
-    /* Span whole page */
-    grid-column: span 12;
 }
 
 h2 {
@@ -68,28 +49,47 @@ h3 {
 }
 
 p {
-    font-size: 1rem;
-    grid-column: 2 / 12;
+    font-size: 1.1rem;
 
     line-height: 1.6rem;
 }
 
-/* Card layout */
+/* Partners grid */
 
-.column-card-view {
+#partners-grid {
     display: grid;
-    grid-template-columns: 1fr;   /* 1 column */
+    grid-template-columns: 1fr;
     gap: 2rem;
 }
 
 @media (min-width: 768px) {
-    .column-card-view {
-        grid-template-columns: repeat(2, 1fr);  /* 2 columns */
+    #partners-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
-    .column-card-view {
-        grid-template-columns: repeat(3, 1fr);  /* 3 columns */
-    }
+/* Partners card grid */
+
+.partners-card-grid {
+    display: grid;
+    grid-template-columns: repeat(12, fr);
+    border: 2px solid red;
+}
+
+h3 {
+    grid-column: 1/12;
+}
+
+ul {
+    grid-column: 2/12;
+}
+
+/* Contact us */
+
+#contact-us {
+    margin-top: 40px;
+    background-color: rgb(37, 37, 37);
+    color: white;
+    
+    padding: 2rem;
 }
