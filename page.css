@@ -1,14 +1,12 @@
 * { margin: 0px; padding: 0px; }
-body { margin: 0px; padding: 0px; }
+body { margin: 0px; padding: 0px; background-color: #f4f4f4;}
 
-body {
-    max-width: 1920px;
-    margin: 0px auto;
-}
-
-.body-content {
+#hero {
     max-width: 1440px;
     margin: 0px auto;
+
+    /* Page padding */
+    padding: 0px 1rem;
 }
 
 :root { font-size: 16px; font-family: sans-serif; }
@@ -25,71 +23,49 @@ body {
     grid-template-columns: repeat(12, 1fr);
 }
 
-h2 {
-    background-color: rgb(122, 50, 50);
-    color: white;
-    font-size: 1.5rem;
-    border-radius: 20px;
-    /* Span content width */
-    grid-column: 2 / 12;
-    width: fit-content;
-    
-    /* Spacings */
-    margin: 1rem 0px;
-    padding: 1rem;
+/* Partners */
+
+#partners-h2 {
+    margin: 2rem 0px 1rem 0rem;
+    grid-column: 1 / 12;
 }
 
-h3 {
-    font-size: 1.17rem;
-    /* Span content width */
-    grid-column: 2 / 12;
-
-    /* Spceings */
-    margin: 1rem 0px;
+#partners-hint {
+    font-size: 0.75rem;
+    font-weight: lighter;
 }
 
-p {
-    font-size: 1.1rem;
-
-    line-height: 1.6rem;
-}
-
-/* Partners grid */
-
-#partners-grid {
+#partners-grid-box {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem
 }
 
 @media (min-width: 768px) {
-    #partners-grid {
+    #partners-grid-box {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* Partners card grid */
-
-.partners-card-grid {
-    display: grid;
-    grid-template-columns: repeat(12, fr);
-    border: 2px solid red;
-}
-
-h3 {
-    grid-column: 1/12;
-}
-
-ul {
-    grid-column: 2/12;
-}
-
-/* Contact us */
-
-#contact-us {
-    margin-top: 40px;
-    background-color: rgb(37, 37, 37);
-    color: white;
-    
+.partners-card {
     padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    background-color: white;
+
+    align-self: start;
+}
+
+.partners-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    margin-top: 1rem;
+    padding-left: 1.25rem;
+}
+
+.partners-list > li {
+    list-style: inside;
+    padding-left: 1rem;
 }

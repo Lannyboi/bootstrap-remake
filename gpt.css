@@ -1,0 +1,145 @@
+/* Optional: spacing tokens (if you want to standardize) */
+:root{
+  --m-2: 0.5rem;
+  --m-3: 0.75rem;
+  --m-4: 1rem;
+  --m-6: 1.5rem;
+  --m-8: 2rem;
+
+  --p-3: 0.75rem;
+  --p-4: 1rem;
+  --p-6: 1.5rem;
+
+  --radius: 1rem;
+
+  --accent: rgb(122, 50, 50);
+  --border: rgba(0,0,0,0.12);
+  --shadow: 0 10px 24px rgba(0,0,0,0.08);
+  font-family: sans-serif;
+}
+
+/* Grid: give it a gap so your columns breathe */
+.grid-box {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--m-6);
+}
+
+/* PARTNERS layout */
+#partners {
+  padding: var(--m-8) 0;
+}
+
+#partners-grid {
+  grid-column: 2 / 12;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--m-6);
+}
+
+@media (min-width: 768px) {
+  #partners-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Partners cards */
+.partners-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--p-6);
+}
+
+/* Make the card headings look intentional */
+.partners-card h3 {
+  margin: 0 0 var(--m-4) 0;
+  font-size: 1.15rem;
+  letter-spacing: 0.2px;
+}
+
+/* Clean list */
+.partners-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--m-3);
+}
+
+/* List item with subtle bullet dot */
+.partners-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--m-3);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.82);
+}
+
+.partners-list li::before {
+  content: "";
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 999px;
+  background: var(--accent);
+  opacity: 0.85;
+}
+
+/* CONTACT section (clean footer card) */
+#contact-us {
+  margin-top: var(--m-8);
+  padding: var(--m-8) 0;
+  background: rgb(37, 37, 37);
+  color: white;
+}
+
+/* Contact card sits in columns 2-12 */
+.contact-card {
+  grid-column: 2 / 12;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius);
+  padding: var(--p-6);
+}
+
+/* Contact rows look aligned + professional */
+.contact-row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: var(--m-4);
+  padding: var(--m-3) 0;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.contact-row:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.contact-label {
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+
+.contact-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  opacity: 0.95;
+}
+
+.contact-link:hover {
+  text-decoration: underline;
+}
+
+/* Your h2 pill can stay, but contact-us h2 looks better without the pill background */
+#contact-us h2 {
+  background: none;
+  padding: 0;
+  margin: 0 0 var(--m-4) 0;
+  border-radius: 0;
+  width: auto;
+  grid-column: auto;
+}

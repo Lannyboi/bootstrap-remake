@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Container Pattern Example</title>
+
+<style>
+
+/* -----------------------------
+   Base Reset
+----------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  font-size: 16px;
+  font-family: system-ui, sans-serif;
+}
+
+/* Your font scaling system */
+@media (min-width: 375px) { html { font-size: 16.8px; } }
+@media (min-width: 425px) { html { font-size: 17.6px; } }
+@media (min-width: 768px) { html { font-size: 18.4px; } }
+@media (min-width: 1024px){ html { font-size: 19.2px; } }
+@media (min-width: 1440px){ html { font-size: 20px; } }
+@media (min-width: 1920px){ html { font-size: 20.8px; } }
+
+/* -----------------------------
+   Container Pattern
+----------------------------- */
+
+/* THIS is the magic */
+.container {
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 3vw, 2.5rem);
+}
+
+/* Full-width background sections */
+.full-bleed {
+  width: 100%;
+}
+
+/* -----------------------------
+   Grid System (12 columns)
+----------------------------- */
+.grid-box {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+/* -----------------------------
+   NAV (Full Width)
+----------------------------- */
+.site-nav {
+  background: #0b3a5a;
+  color: white;
+  padding: 1rem 0;
+}
+
+.site-nav .grid-box {
+  align-items: center;
+}
+
+.logo {
+  grid-column: 1 / 4;
+  font-weight: 700;
+}
+
+.nav-links {
+  grid-column: 8 / 13;
+  display: flex;
+  justify-content: flex-end;
+  gap: 1.5rem;
+}
+
+/* -----------------------------
+   HERO (Full Width Background)
+----------------------------- */
+.hero {
+  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2400&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 6rem 0;
+  position: relative;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  grid-column: 2 / 9;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+/* -----------------------------
+   MAIN BODY CONTENT
+----------------------------- */
+main {
+  padding: 4rem 0;
+}
+
+.section-title {
+  grid-column: 2 / 12;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.card h3 {
+  margin-bottom: 0.75rem;
+}
+
+.card p {
+  line-height: 1.6;
+}
+
+.cards {
+  grid-column: 2 / 12;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* -----------------------------
+   FOOTER (Full Width)
+----------------------------- */
+.site-footer {
+  background: #222;
+  color: white;
+  padding: 3rem 0;
+}
+
+.footer-text {
+  grid-column: 2 / 12;
+  opacity: 0.8;
+  text-align: center;
+}
+
+body {
+  background: #f4f4f4;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAV (Full Bleed) -->
+<header class="site-nav full-bleed">
+  <div class="container">
+    <div class="grid-box">
+      <div class="logo">My Company</div>
+      <div class="nav-links">
+        <div>Home</div>
+        <div>About</div>
+        <div>Services</div>
+        <div>Contact</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- HERO (Full Bleed Background) -->
+<section class="hero full-bleed">
+  <div class="container">
+    <div class="grid-box">
+      <div class="hero-content">
+        <h1>Full-Bleed Layout Done Right</h1>
+        <p>
+          Notice how this hero stretches edge-to-edge, but the content
+          stays perfectly aligned with the rest of the site.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN (Constrained Content) -->
+<main>
+  <div class="container">
+    <div class="grid-box">
+      <h2 class="section-title">Our Services</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Design</h3>
+          <p>Clean UI systems built using rem scaling and structured grids.</p>
+        </div>
+
+        <div class="card">
+          <h3>Development</h3>
+          <p>Responsive, maintainable layouts using modern CSS best practices.</p>
+        </div>
+
+        <div class="card">
+          <h3>Optimization</h3>
+          <p>Performance, accessibility, and clean structural hierarchy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- FOOTER (Full Bleed) -->
+<footer class="site-footer full-bleed">
+  <div class="container">
+    <div class="grid-box">
+      <div class="footer-text">
+        © 2026 My Company — Built with container + full-bleed pattern
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
