@@ -25,15 +25,30 @@ body { margin: 0px; padding: 0px; background-color: #f4f4f4;}
 
 /* Banner */
 
-#banner {
+#hero-banner {
   position: relative;
   min-height: 320px;   /* prevents the “100px tall” issue */
-  height: 600px;
+  height: 550px;
 
   background-image: url("hero-image.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  border-radius: 0px 0px 20px 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Pinnacle Partners */
+
+#pinnacle-partners {
+    margin: 2rem 0px;
+}
+
+#pinnacle-partners-banner {
+    border-radius: 20px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
 }
 
 /* Partners */
@@ -72,13 +87,15 @@ body { margin: 0px; padding: 0px; background-color: #f4f4f4;}
 .partners-list {
     display: flex;
     flex-direction: column;
-    gap: 1.25rem;
+    gap: 1rem;
 
     margin-top: 1rem;
     padding-left: 1.25rem;
 }
 
 .partners-list > li {
+    font-size: 0.8rem;
+
     list-style: inside;
     padding-left: 1rem;
 }
