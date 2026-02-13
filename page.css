@@ -23,6 +23,19 @@ body { margin: 0px; padding: 0px; background-color: #f4f4f4;}
     grid-template-columns: repeat(12, 1fr);
 }
 
+/* Banner */
+
+#banner {
+  position: relative;
+  min-height: 320px;   /* prevents the “100px tall” issue */
+  height: 600px;
+
+  background-image: url("hero-image.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 /* Partners */
 
 #partners-h2 {
