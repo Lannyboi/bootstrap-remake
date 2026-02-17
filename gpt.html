@@ -1,246 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Container Pattern Example</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partners Mini Page</title>
+  <style>
+    * { margin: 0; padding: 0; }
+    body { background: #f4f4f4; font-family: system-ui, Arial, sans-serif; }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 0 1rem; }
 
-<style>
+    .grid-box { display: grid; grid-template-columns: repeat(12, 1fr); }
 
-/* -----------------------------
-   Base Reset
------------------------------ */
-* { margin: 0; padding: 0; box-sizing: border-box; }
+    /* Your header pill */
+    #partners-h2 {
+      margin: 2rem 0 1rem 0;
+      grid-column: 1 / -1;
+      font-size: 1.6rem;
+      font-weight: 800;
+    }
+    #partners-hint { font-size: 0.8rem; font-weight: 400; color: #666; }
 
-html {
-  font-size: 16px;
-  font-family: system-ui, sans-serif;
-}
+    /* Cards grid */
+    #partners-grid-box {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start; /* prevents stretch weirdness */
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) {
+      #partners-grid-box { grid-template-columns: repeat(2, 1fr); }
+    }
 
-/* Your font scaling system */
-@media (min-width: 375px) { html { font-size: 16.8px; } }
-@media (min-width: 425px) { html { font-size: 17.6px; } }
-@media (min-width: 768px) { html { font-size: 18.4px; } }
-@media (min-width: 1024px){ html { font-size: 19.2px; } }
-@media (min-width: 1440px){ html { font-size: 20px; } }
-@media (min-width: 1920px){ html { font-size: 20.8px; } }
+    .partners-card {
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      background: #fff;
+      align-self: start;
+    }
 
-/* -----------------------------
-   Container Pattern
------------------------------ */
+    .partners-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.75rem;
+    }
 
-/* THIS is the magic */
-.container {
-  max-width: 1440px;
-  margin-inline: auto;
-  padding-inline: clamp(1rem, 3vw, 2.5rem);
-}
+    /* Default list (Businesses stays as your flex list) */
+    .partners-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      margin-top: 1rem;
+      padding-left: 1.25rem;
+    }
+    .partners-list > li {
+      font-size: 0.9rem;
+      list-style: inside;
+      padding-left: 0.75rem;
+      line-height: 1.35;
+    }
 
-/* Full-width background sections */
-.full-bleed {
-  width: 100%;
-}
+    /* ⭐ The "layout idea" – make Non-Profits denser + add footer */
+    @media (min-width: 768px) {
+      .partners-list--cols {
+        display: block;             /* columns + flex do NOT mix */
+        column-count: 2;
+        column-gap: 2rem;
+        padding-left: 1.25rem;
+        margin-top: 1rem;
+      }
+      .partners-list--cols > li {
+        break-inside: avoid;
+        margin: 0 0 0.85rem 0;
+        padding-left: 0.75rem;
+        list-style: inside;
+        font-size: 0.9rem;
+      }
+    }
 
-/* -----------------------------
-   Grid System (12 columns)
------------------------------ */
-.grid-box {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
-}
-
-/* -----------------------------
-   NAV (Full Width)
------------------------------ */
-.site-nav {
-  background: #0b3a5a;
-  color: white;
-  padding: 1rem 0;
-}
-
-.site-nav .grid-box {
-  align-items: center;
-}
-
-.logo {
-  grid-column: 1 / 4;
-  font-weight: 700;
-}
-
-.nav-links {
-  grid-column: 8 / 13;
-  display: flex;
-  justify-content: flex-end;
-  gap: 1.5rem;
-}
-
-/* -----------------------------
-   HERO (Full Width Background)
------------------------------ */
-.hero {
-  background-image: url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=2400&q=80");
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 6rem 0;
-  position: relative;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  grid-column: 2 / 9;
-}
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  line-height: 1.6;
-}
-
-/* -----------------------------
-   MAIN BODY CONTENT
------------------------------ */
-main {
-  padding: 4rem 0;
-}
-
-.section-title {
-  grid-column: 2 / 12;
-  font-size: 1.8rem;
-  margin-bottom: 2rem;
-}
-
-.card {
-  background: white;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.card h3 {
-  margin-bottom: 0.75rem;
-}
-
-.card p {
-  line-height: 1.6;
-}
-
-.cards {
-  grid-column: 2 / 12;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* -----------------------------
-   FOOTER (Full Width)
------------------------------ */
-.site-footer {
-  background: #222;
-  color: white;
-  padding: 3rem 0;
-}
-
-.footer-text {
-  grid-column: 2 / 12;
-  opacity: 0.8;
-  text-align: center;
-}
-
-body {
-  background: #f4f4f4;
-}
-
-</style>
+    .partners-card-footer {
+      margin-top: 1.5rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .partners-stat {
+      color: #555;
+      line-height: 1.5;
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    .partners-link {
+      display: inline-block;
+      text-decoration: none;
+      font-weight: 800;
+      color: #111;
+    }
+    .partners-link:hover { text-decoration: underline; }
+  </style>
 </head>
 
 <body>
-
-<!-- NAV (Full Bleed) -->
-<header class="site-nav full-bleed">
-  <div class="container">
-    <div class="grid-box">
-      <div class="logo">My Company</div>
-      <div class="nav-links">
-        <div>Home</div>
-        <div>About</div>
-        <div>Services</div>
-        <div>Contact</div>
+  <div class="wrap">
+    <section>
+      <div class="grid-box">
+        <h2 id="partners-h2">
+          Partners <span id="partners-hint">(Click names to view websites)</span>
+        </h2>
       </div>
-    </div>
-  </div>
-</header>
 
-<!-- HERO (Full Bleed Background) -->
-<section class="hero full-bleed">
-  <div class="container">
-    <div class="grid-box">
-      <div class="hero-content">
-        <h1>Full-Bleed Layout Done Right</h1>
-        <p>
-          Notice how this hero stretches edge-to-edge, but the content
-          stays perfectly aligned with the rest of the site.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- MAIN (Constrained Content) -->
-<main>
-  <div class="container">
-    <div class="grid-box">
-      <h2 class="section-title">Our Services</h2>
-
-      <div class="cards">
-        <div class="card">
-          <h3>Design</h3>
-          <p>Clean UI systems built using rem scaling and structured grids.</p>
+      <div id="partners-grid-box">
+        <div class="partners-card">
+          <h3>Businesses</h3>
+          <ul class="partners-list">
+            <li>4 Seasons Farmers Market</li>
+            <li>Albany Animal Hospital</li>
+            <li>Albany Toyota</li>
+            <li>Beggs Tires</li>
+            <li>Berlee's Fancies</li>
+            <li>Best Western Prairie Inn Plus</li>
+            <li>Bi-Mart</li>
+            <li>Chicken Shanty</li>
+            <li>Country Financial</li>
+            <li>Crabtree Automotive</li>
+            <li>Elmer's of Albany</li>
+            <li>Expressions in Bloom</li>
+            <li>Green Health INS</li>
+            <li>Grey Tech</li>
+            <li>Grocery Outlet</li>
+            <li>Haven's Urban Movement</li>
+            <li>Heritage Mall</li>
+            <li>HighPoints</li>
+            <li>InSpirit Marketing</li>
+            <li>Country Financial / Michelle Morford</li>
+            <li>J &amp; C BBQ</li>
+            <li>Jano's Trophies</li>
+            <li>KGAL / KSHO</li>
+            <li>Legal Shield / Mike Stanley</li>
+            <li>Linn County Fair &amp; EXPO</li>
+            <li>Linn Lanes</li>
+            <li>Milissa's Custom Creations</li>
+            <li>Monarch Medical Weight Loss</li>
+            <li>National Business Solutions</li>
+            <li>NW Apparel &amp; Graphics</li>
+            <li>Pizza Hut</li>
+            <li>Qdoba</li>
+            <li>Rife's</li>
+            <li>Santiam CPR</li>
+            <li>Santiam Wedding &amp; Event Center</li>
+            <li>Self Agency</li>
+            <li>Sengence / Pretty Country</li>
+            <li>She Built the Brand</li>
+            <li>Smith Glass</li>
+            <li>Spinware</li>
+            <li>Sudz in the Bucket</li>
+            <li>Sugar Vibes</li>
+            <li>Sweet Puffs by Carri</li>
+            <li>Taqueria Alonzo and Dos Arbolitos</li>
+            <li>Timber Linn Chiropractic</li>
+            <li>Thomas Garage Door</li>
+            <li>Victory Pest Control</li>
+            <li>Visiting Angles</li>
+            <li>Willamete Valley Christian Supply</li>
+          </ul>
         </div>
 
-        <div class="card">
-          <h3>Development</h3>
-          <p>Responsive, maintainable layouts using modern CSS best practices.</p>
-        </div>
+        <div class="partners-card">
+          <h3>Non-Profits</h3>
 
-        <div class="card">
-          <h3>Optimization</h3>
-          <p>Performance, accessibility, and clean structural hierarchy.</p>
+          <!-- ✅ Add the modifier class here -->
+          <ul class="partners-list partners-list--cols">
+            <li>American Legion Post 11</li>
+            <li>Be Smart Program</li>
+            <li>Campassion Ministries</li>
+            <li>Cummings Racing</li>
+            <li>Et Cetera Thrift Shop</li>
+            <li>K-9 for Kira</li>
+            <li>Lebanon Soup Kitchen</li>
+            <li>Linn County Animal Rescue (LCAR)</li>
+            <li>People United for the Resque and Rehoming of Cats (PURR)</li>
+            <li>St Edwards Youth</li>
+            <li>Steve Harris Oxford House</li>
+            <li>Veterans Community Center</li>
+            <li>Wapiti Boweman</li>
+            <li>We Love McKenzie</li>
+            <li>West Albany Hi-Steppers - Lana Hull</li>
+          </ul>
+
+          <!-- ✅ This footer fills the "dead space" nicely -->
+          <div class="partners-card-footer">
+            <p class="partners-stat">
+              <strong>Community impact:</strong> Receipts turn everyday shopping into support for local causes.
+            </p>
+            <a class="partners-link" href="#partner-with-us">Become a Partner →</a>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</main>
-
-<!-- FOOTER (Full Bleed) -->
-<footer class="site-footer full-bleed">
-  <div class="container">
-    <div class="grid-box">
-      <div class="footer-text">
-        © 2026 My Company — Built with container + full-bleed pattern
-      </div>
-    </div>
-  </div>
-</footer>
-
 </body>
 </html>
