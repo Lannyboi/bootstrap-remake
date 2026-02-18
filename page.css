@@ -123,3 +123,74 @@ h1 {
     list-style: inside;
     padding-left: 1rem;
 }
+
+/* How it works section */
+
+/* HOW IT WORKS */
+#how-it-works {
+  margin: 2rem auto;
+}
+
+/* Use your existing h2 styles, but ensure it lands nicely in the grid */
+#hiw-title {
+  grid-column: 1 / 13; /* full grid width inside body-content */
+}
+
+/* Cards container spans the content columns */
+#hiw-cards {
+  grid-column: 1 / 13;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  #hiw-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Card styling */
+.hiw-card {
+  background: #000;
+  color: #fff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+
+  display: grid;
+  gap: 0.75rem;
+  text-align: center;
+  align-content: start;
+}
+
+/* Simple icon badge */
+.hiw-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  display: grid;
+  place-items: center;
+  font-size: 1.5rem;
+  margin: 0 auto 0.5rem;
+}
+
+/* IMPORTANT: your global h3/p have grid-column rules,
+   so override for card content */
+.hiw-card-title,
+.hiw-card-text {
+  grid-column: auto;   /* cancels grid-column: 2 / 12 from global styles */
+  margin: 0;           /* cancels your global h3 margins */
+}
+
+.hiw-card-title {
+  font-size: 1.1rem;
+}
+
+.hiw-card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  opacity: 0.9;
+}
