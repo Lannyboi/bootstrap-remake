@@ -86,7 +86,6 @@
   text-decoration: none;
   color: rgba(255, 255, 255, 0.9);
   font-size: 18px;
-  font-weight: 300;
 }
 
 /* Bottom button */
@@ -169,6 +168,9 @@
 
 nav {
   border-bottom: 2px solid white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 
   height: 90px;
   background-color: black;
@@ -191,6 +193,33 @@ nav {
   margin-right: 25px;
 }
 
-.desk-nav {
-  color: white;
+.desktop-nav-link {
+    display: none;
+}
+
+nav {
+    height: 90px;
+    background-color: black;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-link {
+  color: white
+}
+
+#nav-logo {
+    height: 70px;
+    width: 70px;
+
+    margin-left: 10px;
+}
+
+#nav-hamburger {
+    height: 50px;
+    width: 50px;
+
+    margin-right: 25px;
 }
