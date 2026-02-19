@@ -21,8 +21,8 @@
         <div id="desktop-nav">
             <a class="nav-link" href="#banner">Home</a>
             <a class="nav-link" href="#partners">Businesses & Non-Profits</a>
-            <a class="nav-link" href="#partner-with-us">Become A Partner</a>
-            <a class="nav-link" href="#events">Events</a>
+            <!-- <a class="nav-link" href="#partner-with-us">Become A Partner</a> -->
+            <!-- <a class="nav-link" href="#events">Events</a> -->
             <a class="nav-link" href="#contact">Contact</a>
             <button id="points-entry-portal-btn-desktop" onclick="window.open('https://santiamweb.com/points-mwv-2025.santiamcommunications.com/index.php/auth/login', '_blank')">Points Entry Portal</button>
         </div>
@@ -41,8 +41,8 @@
             <ul id="mobile-menu-links">
                 <li><a class="mobile-menu-link nav-link" href="#banner">Home</a></li>
                 <li><a class="mobile-menu-link nav-link" href="#partners">Businesses & Non-Profits</a></li>
-                <li><a class="mobile-menu-link nav-link" href="#partner-with-us">Become A Partner</a></li>
-                <li><a class="mobile-menu-link nav-link" href="#events">Events</a></li>
+                <!-- <li><a class="mobile-menu-link nav-link" href="#partner-with-us">Become A Partner</a></li> -->
+                <!-- <li><a class="mobile-menu-link nav-link" href="#events">Events</a></li> -->
                 <li><a class="mobile-menu-link nav-link" href="#contact">Contact</a></li>
             </ul>
 
@@ -70,31 +70,31 @@
         </section>
 
         <!-- How it works -->
-        <section id="how-it-works">
+        <section id="how-it-works" class="body-content">
             <div class="HIW-container">
                 <div class="HIW-card">
-                    <img src="images/icons/bag-icon.png" alt="">
-                    <h3>Text</h3>
-                    <p>More text in fact longer text.</p>
+                <img src="images/icons/bag-icon.png" alt="Shop icon">
+                <h3>Shop Local</h3>
+                <p>Shop at participating Points for Profit businesses.</p>
                 </div>
 
                 <div class="HIW-card">
-                    <img src="images/icons/bag-icon.png" alt="">
-                    <h3>Text</h3>
-                    <p>More text in fact longer text.</p>
+                <img src="images/icons/receipt-icon.png" alt="Receipt icon">
+                <h3>Save Receipts</h3>
+                <p>Keep your receipts from those purchases.</p>
                 </div>
 
                 <div class="HIW-card">
-                    <img src="images/icons/bag-icon.png" alt="">
-                    <h3>Text</h3>
-                    <p>More text in fact longer text.</p>
+                <img src="images/icons/hand-holding-heart-icon.png" alt="Support icon">
+                <h3>Support a Non-Profit</h3>
+                <p>Turn receipts in to a participating non-profit of your choice.</p>
                 </div>
             </div>
         </section>
 
         <!-- Partners -->
         <section id="partners">
-            <h2 id="partners-h2">Partners <span id="partners-hint">(Click names to view websites)</span></h2>
+            <h2 id="partners-h2">Partners <!-- <span id="partners-hint">(Click names to view websites)</span> --></h2>
             
             <div id="partners-grid-box">
                 <div class="partners-card">
@@ -186,8 +186,8 @@
 
                     <div class="contact-block">
                         <h4>Phone</h4>
-                        <p>Office: 123-456-7890</p>
-                        <p>Milissa Lee: 123-456-7890</p>
+                        <p>Office: 541-791-2901</p>
+                        <p>Milissa Lee: 541-981-3131</p>
                     </div>
 
                     <div class="contact-block">
@@ -209,7 +209,7 @@
 
                 <!-- Contact Form -->
                 <div id="contact-form-card">
-                    <h2>Send Us a Message</h2>
+                    <h2>Send Us a Message <span id="partners-hint">(Not yet working)</span></h2>
                     <p>Questions about partnering, receipts, or events? Send a message and we'll reply soon.</p>
 
                     <form action="#" id="contact-form" method="POST" autocomplete="new-password">
@@ -244,6 +244,20 @@
 
     <footer>Points For Profit</footer>
     <!-- Scripts -->
-     <script src="page.js"></script>
+    <script src="page.js"></script>
+
+        <!-- Email form script -->
+    <script>
+        const contactForm = document.getElementById("contact-form");
+
+        contactForm.addEventListener("submit", function (e) {
+            e.preventDefault(); // stop actual form submission
+
+            alert("Email function not setup yet.");
+
+            // Optional: clear the form after alert
+            contactForm.reset();
+        });
+    </script>
 </body>
 </html>
